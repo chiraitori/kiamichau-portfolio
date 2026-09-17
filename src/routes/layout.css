@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+:root {
+	--page: #faf6f3;
+	--surface: #fffcfa;
+	--surface-hover: #f5ecec;
+	--ink: #382d37;
+	--ink-muted: #73616b;
+	--line: #e4d7dc;
+	--accent: #944c68;
+	--accent-hover: #7e3e57;
+	--accent-soft: #f2e2e8;
+	--on-accent: #ffffff;
+	--shadow-color: 48, 43, 48;
+	--nav-bg: rgba(250, 246, 243, 0.92);
+	--font-handwritten: 'Playpen Sans', 'Comic Sans MS', cursive;
+	--font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+	--bezier-one: cubic-bezier(.25, .46, .45, .94);
+}
+
+:root.dark,
+.dark {
+	--page: #1b171c;
+	--surface: #262027;
+	--surface-hover: #302630;
+	--ink: #f0e5eb;
+	--ink-muted: #bdaab5;
+	--line: #443540;
+	--accent: #e5a4bd;
+	--accent-hover: #efbdd0;
+	--accent-soft: #3d2935;
+	--on-accent: #30212b;
+	--shadow-color: 0, 0, 0;
+	--nav-bg: rgba(27, 23, 28, 0.92);
+}
+
+html {
+	scroll-padding-top: 5.5rem;
+	scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+body {
+	background-color: var(--page);
+	color: var(--ink);
+	font-family: var(--font-sans);
+	transition: background-color 0.15s ease, color 0.15s ease;
+	min-height: 100dvh;
+}
+
+.font-handwritten {
+	font-family: var(--font-handwritten);
+}
+
+/* Chiraitori Card Hover Style (from chiraitori.dev) */
+.chiraitori-card {
+	border: 1px solid var(--line);
+	background-color: var(--surface);
+	transition: transform 0.3s var(--bezier-one),
+	            box-shadow 0.3s var(--bezier-one),
+	            border-color 0.3s ease,
+	            background-color 0.3s ease;
+}
+
+.chiraitori-card:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.12);
+	border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+}
+
+.dark .chiraitori-card:hover {
+	box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.45);
+	border-color: color-mix(in srgb, var(--accent) 65%, var(--line));
+}
+
+/* Accessibility Focus Rings */
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* Modern Sleek Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--line);
+	border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--accent);
+}
+
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--line) transparent;
+}
+
+/* Utility to hide scrollbars completely while maintaining scroll functionality */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+/* Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
