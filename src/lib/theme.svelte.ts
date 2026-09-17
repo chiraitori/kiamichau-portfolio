@@ -10,6 +10,18 @@ class ThemeState {
 	init() {
 		if (!browser) return;
 		this.isDark = document.documentElement.classList.contains('dark');
+
+		const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+		mediaQuery.addEventListener('change', (e) => {
+			if (!localStorage.getItem('theme')) {
+				this.isDark = e.matches;
+				if (e.matches) {
+					document.documentElement.classList.add('dark');
+				} else {
+					document.documentElement.classList.remove('dark');
+				}
+			}
+		});
 	}
 
 	toggle() {
