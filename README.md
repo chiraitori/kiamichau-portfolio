@@ -179,8 +179,6 @@ kiamichau-portfolio/
 │   │   ├── +layout.svelte      # Bố cục gốc
 │   │   └── layout.css          # Token màu sắc và thiết lập CSS toàn cục
 │   └── app.html                # File HTML gốc chứa script chặn FOUC
-├── scripts/
-│   └── generate_showcase.py    # Script Python tạo ảnh banner mockup
 ├── LICENSE                     # Giấy phép mã nguồn mở MIT
 ├── package.json
 ├── tsconfig.json

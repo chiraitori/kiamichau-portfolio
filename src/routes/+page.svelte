@@ -5,7 +5,7 @@
 	const title = 'Kiami Châu · Trang liên kết chính thức';
 	const description =
 		'Trang thông tin, mạng xã hội và cổng donate chính thức của Kiami Châu (Châu Hoàng Long) · VTuber & Content Creator.';
-	const previewImage = $derived(`${page.url.origin}/preview.png`);
+	const previewImage = $derived(`${page.url.origin}/avatar.png`);
 </script>
 
 <svelte:head>
@@ -20,8 +20,8 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={previewImage} />
 
-	<!-- Twitter / X -->
-	<meta name="twitter:card" content="summary_large_image" />
+	<!-- Twitter / X (compact summary thumbnail) -->
+	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={previewImage} />
