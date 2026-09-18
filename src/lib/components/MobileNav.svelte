@@ -5,11 +5,11 @@
 	let activeSection = $state('home');
 
 	const navItems = [
-		{ id: 'home', label: '/', href: '#home', icon: House },
-		{ id: 'about', label: 'about', href: '#about', icon: User },
-		{ id: 'sanctuary', label: 'sanctuary', href: '#sanctuary', icon: DiscordLogo },
-		{ id: 'channels', label: 'socials', href: '#channels', icon: ShareNetwork },
-		{ id: 'donations', label: 'donate', href: '#donations', icon: Coffee }
+		{ id: 'home', label: '/', href: '/#home', icon: House },
+		{ id: 'about', label: 'about', href: '/#about', icon: User },
+		{ id: 'sanctuary', label: 'sanctuary', href: '/#sanctuary', icon: DiscordLogo },
+		{ id: 'channels', label: 'socials', href: '/#channels', icon: ShareNetwork },
+		{ id: 'donations', label: 'donate', href: '/#donations', icon: Coffee }
 	];
 
 	onMount(() => {

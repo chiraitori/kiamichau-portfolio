@@ -15,7 +15,7 @@
 	<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between relative">
 		<!-- Brand: Kiami Châu with custom character ear silhouette mark -->
 		<div class="flex items-center">
-			<a href="#home" class="flex items-center gap-2.5 group text-[var(--ink)] active:scale-[0.98] transition-transform">
+			<a href="/#home" class="flex items-center gap-2.5 group text-[var(--ink)] active:scale-[0.98] transition-transform">
 				<div class="w-8 h-8 rounded-xl bg-[var(--surface-hover)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] group-hover:border-[var(--accent)] group-hover:bg-[var(--accent-soft)] transition-colors">
 					<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M4 18L7 5l6 7 6-7 3 13" />
@@ -30,19 +30,19 @@
 
 		<!-- Desktop Nav: Flatter, editorial style, no floating pill box -->
 		<nav class="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-7 text-xs font-semibold text-[var(--ink-muted)]">
-			<a href="#home" class="hover:text-[var(--ink)] transition-colors py-1">
+			<a href="/#home" class="hover:text-[var(--ink)] transition-colors py-1">
 				Trang chủ
 			</a>
-			<a href="#about" class="hover:text-[var(--ink)] transition-colors py-1">
+			<a href="/#about" class="hover:text-[var(--ink)] transition-colors py-1">
 				Giới thiệu
 			</a>
-			<a href="#sanctuary" class="hover:text-[var(--ink)] transition-colors py-1">
+			<a href="/#sanctuary" class="hover:text-[var(--ink)] transition-colors py-1">
 				Thánh đường
 			</a>
-			<a href="#channels" class="hover:text-[var(--ink)] transition-colors py-1">
+			<a href="/#channels" class="hover:text-[var(--ink)] transition-colors py-1">
 				Mạng xã hội
 			</a>
-			<a href="#donations" class="hover:text-[var(--ink)] transition-colors py-1">
+			<a href="/#donations" class="hover:text-[var(--ink)] transition-colors py-1">
 				Donate
 			</a>
 		</nav>

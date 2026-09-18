@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/state';
-	import { theme } from '$lib/theme.svelte';
+	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import MobileNav from '$lib/components/MobileNav.svelte';
 	import {
 		House,
-		Sun,
-		Moon,
+		User,
 		DiscordLogo,
 		YoutubeLogo,
-		Compass,
+		ShareNetwork,
+		Coffee,
 		ArrowsClockwise
 	} from 'phosphor-svelte';
 	import { profileData } from '$lib/data';
@@ -58,7 +59,7 @@
 			webp: null,
 			alt: 'Zoro getting lost',
 			badge: 'THÁNH LẠC ĐƯỜNG ZORO',
-			heading: 'Oh wait... đây là đâu?! 🧭',
+			heading: 'Oh wait... đây là đâu?!',
 			desc: 'Đến người đi đường thẳng còn lạc được thì trang web này lạc lối cũng là chuyện thường tình. Để Kiami Châu chỉ đường lại cho nè!'
 		},
 		{
@@ -67,12 +68,13 @@
 			webp: null,
 			alt: 'Memcho eyes swirling confused',
 			badge: 'MEMCHO CONFUSED',
-			heading: 'Tọa độ này lạ quá ta? 🤔',
+			heading: 'Tọa độ này lạ quá ta?',
 			desc: 'Mắt đã xoay mòng mòng đầy dấu chấm hỏi luôn rồi! Trang này không tồn tại đâu, bấm nút quay về trang chủ thôi nào!'
 		}
 	];
 
 	let memeIndex = $state(0);
+	let copiedEmail = $state(false);
 
 	onMount(() => {
 		try {
@@ -95,6 +97,12 @@
 		try {
 			sessionStorage.setItem('kiami_404_meme_idx', memeIndex.toString());
 		} catch {}
+	}
+
+	function copyEmail() {
+		navigator.clipboard.writeText(profileData.email);
+		copiedEmail = true;
+		setTimeout(() => (copiedEmail = false), 2000);
 	}
 
 	const is404 = $derived(page.status === 404);
@@ -135,65 +143,12 @@
 	<meta name="description" content={errorDesc} />
 </svelte:head>
 
-<div class="min-h-[100dvh] flex flex-col justify-between bg-[var(--page)] text-[var(--ink)]">
-	<!-- Top Navigation Bar -->
-	<header class="sticky top-0 z-40 backdrop-blur-md bg-[var(--nav-bg)] border-b border-[var(--line)] transition-colors">
-		<div class="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
-			<!-- Brand Logo -->
-			<a
-				href="/"
-				class="flex items-center gap-2.5 group text-[var(--ink)] active:scale-[0.98] transition-transform"
-			>
-				<div
-					class="w-8 h-8 rounded-xl bg-[var(--surface-hover)] border border-[var(--line)] flex items-center justify-center text-[var(--accent)] group-hover:border-[var(--accent)] group-hover:bg-[var(--accent-soft)] transition-colors"
-				>
-					<svg
-						class="w-4 h-4"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2.2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-					>
-						<path d="M4 18L7 5l6 7 6-7 3 13" />
-						<path d="M9 18c1.5-.7 4.5-.7 6 0" stroke-width="1.8" />
-					</svg>
-				</div>
-				<span class="font-extrabold tracking-tight text-base sm:text-lg text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors">
-					Kiami Châu
-				</span>
-			</a>
-
-			<!-- Right Actions: Home Button & Theme Toggle -->
-			<div class="flex items-center gap-2 sm:gap-3">
-				<a
-					href="/"
-					class="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2 rounded-2xl border-[1.5px] border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] text-xs font-semibold text-[var(--ink)] transition-colors"
-				>
-					<House size={15} weight="bold" class="text-[var(--accent)]" />
-					<span class="hidden sm:inline">Trang chủ</span>
-				</a>
-
-				<button
-					type="button"
-					onclick={() => theme.toggle()}
-					aria-label="Toggle theme"
-					class="w-10 h-10 rounded-2xl border-[1.5px] border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] active:scale-[0.95] flex items-center justify-center text-sm transition-colors shadow-[2px_2px_0px_0px_rgba(var(--shadow-color),0.03)] cursor-pointer"
-					title={theme.isDark ? 'Chuyển sang chế độ sáng' : 'Chuyển sang chế độ tối'}
-				>
-					{#if theme.isDark}
-						<Sun size={18} weight="bold" class="text-amber-300" />
-					{:else}
-						<Moon size={18} weight="bold" class="text-[var(--ink)]" />
-					{/if}
-				</button>
-			</div>
-		</div>
-	</header>
+<div class="min-h-[100dvh] flex flex-col justify-between bg-[var(--page)] text-[var(--ink)] antialiased">
+	<!-- Synchronized Official Site Header -->
+	<Header onCopyEmail={copyEmail} {copiedEmail} />
 
 	<!-- Main 404 Hero Container -->
-	<main class="flex-1 flex items-center justify-center p-4 sm:p-8">
+	<main class="flex-1 flex items-center justify-center p-4 sm:p-8 pb-24 lg:pb-12">
 		<div class="max-w-xl w-full text-center space-y-6 my-auto">
 			<!-- Cute Animated Avatar Badge (Clickable to rotate/shuffle) -->
 			<div class="relative inline-block mx-auto">
@@ -232,7 +187,7 @@
 				<div
 					class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--line)]"
 				>
-					<Compass size={14} weight="bold" />
+					<span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
 					<span>{errorBadge}</span>
 				</div>
 
@@ -245,13 +200,13 @@
 				</p>
 			</div>
 
-			<!-- Action Buttons -->
+			<!-- Action Buttons (Synchronized with Hero CTA button styling) -->
 			<div class="flex flex-wrap items-center justify-center gap-3 pt-2">
 				<a
 					href="/"
-					class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] hover:opacity-95 active:scale-95 text-[var(--on-accent)] font-bold text-sm shadow-md transition-all cursor-pointer"
+					class="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[var(--accent)] hover:opacity-95 active:scale-[0.98] text-[var(--on-accent)] font-bold text-xs sm:text-sm shadow-md shadow-[var(--accent)]/20 transition-all cursor-pointer"
 				>
-					<House size={18} weight="bold" />
+					<House size={16} weight="bold" />
 					<span>Về trang chủ</span>
 				</a>
 
@@ -259,9 +214,9 @@
 					href={discordUrl}
 					target="_blank"
 					rel="noreferrer"
-					class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--surface)] hover:bg-[var(--surface-hover)] border-[1.5px] border-[var(--line)] active:scale-95 text-[var(--ink)] font-semibold text-sm transition-all shadow-xs"
+					class="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border-[1.5px] border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] active:scale-[0.98] text-[var(--ink)] font-semibold text-xs sm:text-sm shadow-sm transition-all"
 				>
-					<DiscordLogo size={18} weight="bold" class="text-[#5865F2]" />
+					<DiscordLogo size={16} weight="bold" class="text-[#5865F2]" />
 					<span>Vào Thánh đường</span>
 				</a>
 
@@ -269,44 +224,54 @@
 					href={youtubeUrl}
 					target="_blank"
 					rel="noreferrer"
-					class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[var(--surface)] hover:bg-[var(--surface-hover)] border-[1.5px] border-[var(--line)] active:scale-95 text-[var(--ink)] font-semibold text-sm transition-all shadow-xs"
+					class="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full border-[1.5px] border-[var(--line)] bg-[var(--surface)] hover:bg-[var(--surface-hover)] active:scale-[0.98] text-[var(--ink)] font-semibold text-xs sm:text-sm shadow-sm transition-all"
 				>
-					<YoutubeLogo size={18} weight="fill" class="text-[#FF0000]" />
+					<YoutubeLogo size={16} weight="bold" class="text-rose-500" />
 					<span>Kênh YouTube</span>
 				</a>
 			</div>
 
-			<!-- Quick Links Card -->
+			<!-- Quick Links Card (100% synchronized Phosphor icons, no emojis) -->
 			<div class="chiraitori-card rounded-2xl p-4 sm:p-5 text-left text-xs space-y-3 mt-6">
 				<div class="flex items-center justify-between border-b border-[var(--line)] pb-2 text-[var(--ink-muted)]">
 					<span class="font-mono uppercase font-bold text-[10px] tracking-wider">Đường tắt nhanh</span>
 					<button
 						type="button"
 						onclick={nextMeme}
-						class="inline-flex items-center gap-1 text-[11px] font-semibold text-[var(--accent)] hover:underline cursor-pointer"
+						class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[var(--accent)] hover:underline cursor-pointer"
 					>
-						<ArrowsClockwise size={12} weight="bold" />
+						<ArrowsClockwise size={13} weight="bold" />
 						<span>Đổi meme khác</span>
 					</button>
 				</div>
-				<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+				<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
 					<a
 						href="/#about"
-						class="p-2 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors text-center"
+						class="p-2.5 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors flex items-center justify-center gap-1.5 text-center"
 					>
-						✨ Giới thiệu
+						<User size={14} weight="bold" class="text-[var(--accent)] shrink-0" />
+						<span>Giới thiệu</span>
 					</a>
 					<a
 						href="/#sanctuary"
-						class="p-2 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors text-center"
+						class="p-2.5 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors flex items-center justify-center gap-1.5 text-center"
 					>
-						🏰 Thánh đường
+						<DiscordLogo size={14} weight="bold" class="text-[#5865F2] shrink-0" />
+						<span>Thánh đường</span>
+					</a>
+					<a
+						href="/#channels"
+						class="p-2.5 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors flex items-center justify-center gap-1.5 text-center"
+					>
+						<ShareNetwork size={14} weight="bold" class="text-[var(--accent)] shrink-0" />
+						<span>Mạng xã hội</span>
 					</a>
 					<a
 						href="/#donations"
-						class="p-2 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors text-center"
+						class="p-2.5 rounded-xl bg-[var(--page)] hover:bg-[var(--surface-hover)] border border-[var(--line)] text-[var(--ink)] hover:text-[var(--accent)] font-medium transition-colors flex items-center justify-center gap-1.5 text-center"
 					>
-						☕ Cổng Donate
+						<Coffee size={14} weight="bold" class="text-[var(--accent)] shrink-0" />
+						<span>Cổng Donate</span>
 					</a>
 				</div>
 			</div>
@@ -315,4 +280,7 @@
 
 	<!-- Footer -->
 	<Footer />
+
+	<!-- Mobile Navigation Bar (100% synchronized with main page) -->
+	<MobileNav />
 </div>
