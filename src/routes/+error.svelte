@@ -108,11 +108,11 @@
 					class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-[var(--surface)] border-2 border-[var(--line)] p-2 shadow-sm flex items-center justify-center overflow-hidden"
 				>
 					<img
-						src="/donations/vcb-cat1.gif"
-						alt="Shamiko confused"
-						width="160"
-						height="90"
-						class="w-full h-auto object-contain select-none"
+						src="/error/haachama-bruh.gif"
+						alt="Haachama confused"
+						width="220"
+						height="220"
+						class="w-full h-full object-contain select-none"
 					/>
 				</div>
 				<div
