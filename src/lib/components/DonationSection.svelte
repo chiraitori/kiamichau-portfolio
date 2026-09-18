@@ -58,19 +58,19 @@
 					<div class="flex items-center justify-between">
 						<div class="w-10 h-10 rounded-2xl bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center p-1.5 shadow-sm group-hover:border-[var(--accent)] group-hover:bg-[var(--surface-hover)] transition-colors duration-200 overflow-hidden">
 							{#if d.name.toLowerCase().includes('vietcombank')}
-								<img src="/icons/vietcombank.png" alt="Vietcombank" class="w-6 h-6 object-contain" />
+								<img src="/icons/vietcombank.png" alt="Vietcombank" width="24" height="24" loading="lazy" decoding="async" class="w-6 h-6 object-contain" />
 							{:else if d.name.toLowerCase().includes('wescan')}
-								<img src="/icons/wescan.jpg" alt="WESCAN" class="w-7 h-7 rounded-lg object-contain shadow-xs" />
+								<img src="/icons/wescan.jpg" alt="WESCAN" width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 rounded-lg object-contain shadow-xs" />
 							{:else if d.name.toLowerCase().includes('sociabuzz')}
-								<img src="/icons/sociabuzz.png" alt="Sociabuzz" class="w-6 h-6 object-contain" />
+								<img src="/icons/sociabuzz.png" alt="Sociabuzz" width="24" height="24" loading="lazy" decoding="async" class="w-6 h-6 object-contain" />
 							{:else if d.name.toLowerCase().includes('paypal')}
 								<div class="text-[#00457C] dark:text-[#0079C1] flex items-center justify-center">
 									<PaypalLogo size={22} weight="fill" />
 								</div>
 							{:else if d.name.toLowerCase().includes('gank')}
-								<img src="/icons/gank.png" alt="Gank" class="w-7 h-7 object-contain" />
+								<img src="/icons/gank.png" alt="Gank" width="28" height="28" loading="lazy" decoding="async" class="w-7 h-7 object-contain" />
 							{:else if d.name.toLowerCase().includes('zypage')}
-								<img src="/icons/zypage.png" alt="ZyPage" class="w-6 h-6 object-contain rounded-md" />
+								<img src="/icons/zypage.png" alt="ZyPage" width="24" height="24" loading="lazy" decoding="async" class="w-6 h-6 object-contain rounded-md" />
 							{:else}
 								<Coffee size={20} weight="bold" class="text-[var(--accent)]" />
 							{/if}
@@ -129,7 +129,7 @@
 			<div class="flex items-center justify-between px-5 py-3.5 border-b border-[var(--line)] bg-[var(--page)]">
 				<div class="flex items-center gap-3">
 					<div class="w-9 h-9 rounded-xl bg-[var(--surface)] border border-[var(--line)] flex items-center justify-center p-1 shadow-sm shrink-0">
-						<img src="/icons/vietcombank.png" alt="Vietcombank" class="w-6 h-6 object-contain" />
+						<img src="/icons/vietcombank.png" alt="Vietcombank" width="24" height="24" loading="lazy" decoding="async" class="w-6 h-6 object-contain" />
 					</div>
 					<div>
 						<h3 class="font-bold text-base text-[var(--ink)] leading-tight">Ủng hộ qua Vietcombank</h3>
@@ -139,7 +139,7 @@
 
 				<div class="flex items-center gap-2">
 					<!-- Gif 1: Shamiko cheering -->
-					<img src="/donations/vcb-cat1.gif" alt="Cheering" class="h-9 w-auto rounded-lg object-contain" />
+					<img src="/donations/vcb-cat1.gif" alt="Cheering" width="64" height="36" loading="lazy" decoding="async" class="h-9 w-auto rounded-lg object-contain" />
 					<button
 						type="button"
 						onclick={() => (isBankModalOpen = false)}
@@ -156,7 +156,10 @@
 				<!-- QR Code Container -->
 				<div class="flex flex-col items-center justify-center p-3 rounded-2xl bg-[var(--page)] border border-[var(--line)] space-y-2 text-center">
 					<div class="p-2 bg-white rounded-xl shadow-xs border border-neutral-200">
-						<img src="/donations/vcb-qr.jpg" alt="Mã QR Vietcombank" class="w-40 h-40 sm:w-44 sm:h-44 object-contain block mx-auto" />
+						<picture class="block mx-auto">
+							<source srcset="/donations/vcb-qr.webp" type="image/webp" />
+							<img src="/donations/vcb-qr.jpg" alt="Mã QR Vietcombank" width="176" height="176" loading="lazy" decoding="async" class="w-40 h-40 sm:w-44 sm:h-44 object-contain block mx-auto" />
+						</picture>
 					</div>
 					<div class="space-y-0.5">
 						<p class="font-bold text-xs sm:text-sm text-[var(--ink)]">Mã QR Vietcombank (VietQR)</p>
@@ -232,7 +235,7 @@
 
 				<!-- Message Note with Gif 2: Tohru -->
 				<div class="p-3 rounded-2xl bg-[var(--accent-soft)]/35 border border-[var(--accent)]/30 flex items-center gap-3">
-					<img src="/donations/vcb-cat2.gif" alt="Tohru" class="w-12 h-12 rounded-xl object-cover shrink-0 shadow-xs border border-white/10" />
+					<img src="/donations/vcb-cat2.gif" alt="Tohru" width="48" height="48" loading="lazy" decoding="async" class="w-12 h-12 rounded-xl object-cover shrink-0 shadow-xs border border-white/10" />
 					<div class="space-y-0.5 text-[var(--ink)]">
 						<p class="font-bold text-xs text-[var(--accent)] uppercase tracking-wider">Lời nhắn từ Kiami Châu</p>
 						<p class="text-xs text-[var(--ink)] leading-relaxed italic">

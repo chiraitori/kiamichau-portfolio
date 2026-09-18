@@ -26,12 +26,19 @@
 		class="hidden lg:flex absolute right-0 top-0 bottom-0 w-1/2 pointer-events-none overflow-hidden items-end justify-end select-none opacity-40 lg:opacity-75 transition-opacity"
 		aria-hidden="true"
 	>
-		<img
-			src={profileData.avatarUrl}
-			alt=""
-			class="h-[85%] sm:h-[95%] max-h-[380px] object-contain object-bottom-right"
-			style="-webkit-mask-image: radial-gradient(circle at 70% 55%, black 40%, transparent 80%); mask-image: radial-gradient(circle at 70% 55%, black 40%, transparent 80%);"
-		/>
+		<picture class="h-[85%] sm:h-[95%] max-h-[380px] flex items-end justify-end">
+			<source srcset="/avatar.webp" type="image/webp" />
+			<img
+				src={profileData.avatarUrl}
+				alt=""
+				width="550"
+				height="550"
+				fetchpriority="high"
+				decoding="async"
+				class="h-full w-auto object-contain object-bottom-right"
+				style="-webkit-mask-image: radial-gradient(circle at 70% 55%, black 40%, transparent 80%); mask-image: radial-gradient(circle at 70% 55%, black 40%, transparent 80%);"
+			/>
+		</picture>
 	</div>
 
 	<!-- Hero Content -->

@@ -49,12 +49,19 @@
 	<div class="rounded-3xl border-[1.5px] border-[var(--line)] bg-[var(--surface)] p-6 shadow-[4px_4px_0px_0px_rgba(var(--shadow-color),0.03)] space-y-6">
 		<!-- Avatar Frame -->
 		<div class="relative w-full aspect-square rounded-2xl overflow-hidden border-[1.5px] border-[var(--line)] bg-[var(--surface-hover)] shadow-inner group">
-			<img
-				src={profileData.avatarUrl}
-				alt="{profileData.name} ({profileData.realName})"
-				loading="eager"
-				class="w-full h-full object-cover object-top group-hover:-translate-y-1 transition-transform duration-500"
-			/>
+			<picture class="w-full h-full block">
+				<source srcset="/avatar.webp" type="image/webp" />
+				<img
+					src={profileData.avatarUrl}
+					alt="{profileData.name} ({profileData.realName})"
+					width="550"
+					height="550"
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+					class="w-full h-full object-cover object-top group-hover:-translate-y-1 transition-transform duration-500"
+				/>
+			</picture>
 			<div class="absolute bottom-2 left-2 right-2 p-2 rounded-xl bg-[var(--surface)]/90 backdrop-blur-md border border-[var(--line)] text-center">
 				<p class="text-xs font-bold text-[var(--ink)]">{profileData.name}</p>
 				<p class="text-[10px] font-mono text-[var(--accent)]">@{profileData.realName}</p>

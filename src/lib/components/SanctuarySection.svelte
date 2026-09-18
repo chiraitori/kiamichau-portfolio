@@ -65,11 +65,18 @@
 						<Hash size={12} weight="bold" class="text-[var(--accent)]" />
 						<span>Kênh thông báo trong máy chủ</span>
 					</div>
-					<img
-						src="/banner.jpg"
-						alt="Kênh lịch stream Discord"
-						class="w-full h-auto rounded-lg object-contain block"
-					/>
+					<picture class="w-full block">
+						<source srcset="/banner.webp" type="image/webp" />
+						<img
+							src="/banner.jpg"
+							alt="Kênh lịch stream Discord"
+							width="355"
+							height="246"
+							loading="lazy"
+							decoding="async"
+							class="w-full h-auto rounded-lg object-contain block"
+						/>
+					</picture>
 				</div>
 			</div>
 
