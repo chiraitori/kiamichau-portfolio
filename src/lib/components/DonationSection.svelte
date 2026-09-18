@@ -88,6 +88,12 @@
 							{d.name}
 						</h3>
 						<p class="text-xs text-[var(--ink-muted)] leading-relaxed">{d.note}</p>
+						{#if d.noStreamAlert}
+							<p class="text-[11px] text-amber-700/90 dark:text-amber-400/90 font-medium flex items-center gap-1.5 pt-0.5">
+								<span class="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0"></span>
+								<span>Không có thông báo lên stream</span>
+							</p>
+						{/if}
 					</div>
 				</div>
 
@@ -214,6 +220,14 @@
 							{/if}
 						</button>
 					</div>
+				</div>
+
+				<!-- Stream Alert Notice -->
+				<div class="p-2.5 px-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-800 dark:text-amber-300 flex items-start gap-2">
+					<span class="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5"></span>
+					<p class="leading-relaxed text-[11px] sm:text-xs">
+						<strong class="font-semibold">Lưu ý:</strong> Chuyển khoản ngân hàng trực tiếp <strong>không có thông báo lên livestream</strong>. Nếu bạn muốn hiển thị donate và tin nhắn trên stream, hãy dùng cổng <strong>WESCAN</strong> nhé!
+					</p>
 				</div>
 
 				<!-- Message Note with Gif 2: Tohru -->

@@ -16,6 +16,7 @@ export interface DonationLink {
 	note?: string;
 	recommended?: boolean;
 	iconKey?: 'bank' | 'qrcode' | 'globe' | 'creditcard' | 'gift' | 'zypage';
+	noStreamAlert?: boolean;
 }
 
 export interface CreatorStats {
@@ -121,7 +122,8 @@ export const profileData: CreatorProfile = {
 			url: 'https://kiamibanking.carrd.co/',
 			iconKey: 'bank',
 			note: 'Chuyển khoản trực tiếp qua ngân hàng',
-			recommended: true
+			recommended: true,
+			noStreamAlert: true
 		},
 		{
 			name: 'WESCAN',
@@ -151,7 +153,8 @@ export const profileData: CreatorProfile = {
 			name: 'ZyPage',
 			url: 'https://zypage.com/kiamichau',
 			iconKey: 'zypage',
-			note: 'Cổng donate & ủng hộ tiện lợi'
+			note: 'Cổng donate & ủng hộ tiện lợi',
+			noStreamAlert: true
 		}
 	]
 };
