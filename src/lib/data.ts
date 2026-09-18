@@ -118,18 +118,18 @@ export const profileData: CreatorProfile = {
 	],
 	donations: [
 		{
+			name: 'WESCAN',
+			url: 'https://wescan.vn/kiamichau',
+			iconKey: 'qrcode',
+			note: 'Cổng donate quét mã QR & thông báo live',
+			recommended: true
+		},
+		{
 			name: 'Vietcombank',
 			url: 'https://kiamibanking.carrd.co/',
 			iconKey: 'bank',
 			note: 'Chuyển khoản trực tiếp qua ngân hàng',
-			recommended: true,
 			noStreamAlert: true
-		},
-		{
-			name: 'WESCAN',
-			url: 'https://wescan.vn/kiamichau',
-			iconKey: 'qrcode',
-			note: 'Cổng donate quét mã QR & thông báo live'
 		},
 		{
 			name: 'Sociabuzz',
