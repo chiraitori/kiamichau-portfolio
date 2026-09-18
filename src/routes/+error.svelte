@@ -15,17 +15,17 @@
 	const is404 = $derived(page.status === 404);
 	const errorTitle = $derived(
 		is404
-			? '404 · Không tìm thấy trang'
+			? '404 · Bạn dạng lạc lúi?'
 			: `${page.status || 500} · Có sự cố xảy ra`
 	);
 	const errorHeading = $derived(
 		is404
-			? 'Oops! Lạc đường rồi bạn ơi ~'
+			? 'Bạn dạng lạc lúi? :)))'
 			: 'Ôi hỏng! Đã có lỗi xảy ra rồi ~'
 	);
 	const errorDesc = $derived(
 		is404
-			? 'Trang bạn đang tìm kiếm có vẻ đã bị đổi liên kết, đã gỡ bỏ hoặc chưa từng tồn tại trong Thánh đường Kiami Châu.'
+			? 'HAACHAMA CHAMA~ Có vẻ bạn đã đi lạc vào một chiều không gian không tồn tại rồi! Đừng hoảng sợ, để Kiami Châu dẫn đường về nhà nghen ~'
 			: (page.error?.message || 'Hệ thống đang gặp sự cố tạm thời, vui lòng thử lại sau.')
 	);
 	const discordUrl =
@@ -128,7 +128,7 @@
 					class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--line)]"
 				>
 					<Compass size={14} weight="bold" />
-					<span>Không tìm thấy toạ độ này</span>
+					<span>{is404 ? 'HAACHAMA CHAMA~' : 'Không tìm thấy toạ độ'}</span>
 				</div>
 
 				<h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--ink)] text-balance">
