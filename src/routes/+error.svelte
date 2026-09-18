@@ -107,13 +107,19 @@
 				<div
 					class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-[var(--surface)] border-2 border-[var(--line)] p-2 shadow-sm flex items-center justify-center overflow-hidden"
 				>
-					<img
-						src="/error/haachama-bruh.gif"
-						alt="Haachama confused"
-						width="220"
-						height="220"
-						class="w-full h-full object-contain select-none"
-					/>
+					<picture class="w-full h-full flex items-center justify-center">
+						<source srcset="/error/haachama-bruh.webp" type="image/webp" />
+						<img
+							src="/error/haachama-bruh.gif"
+							alt="Haachama confused"
+							width="160"
+							height="160"
+							loading="eager"
+							fetchpriority="high"
+							decoding="async"
+							class="w-full h-full object-contain select-none"
+						/>
+					</picture>
 				</div>
 				<div
 					class="absolute -bottom-2 -right-2 px-3 py-1 rounded-full font-mono text-xs font-extrabold bg-[var(--accent)] text-[var(--on-accent)] shadow-md border-2 border-[var(--surface)]"
