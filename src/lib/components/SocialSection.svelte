@@ -16,24 +16,31 @@
 <section id="channels" class="space-y-4">
 	<div class="flex items-center justify-between border-b border-[var(--line)] pb-3">
 		<div class="flex items-center gap-2">
-			<div class="w-7 h-7 rounded-xl bg-[var(--accent-soft)] flex items-center justify-center text-[var(--accent)]">
+			<div
+				class="flex h-7 w-7 items-center justify-center rounded-xl bg-[var(--accent-soft)] text-[var(--accent)]"
+			>
 				<ShareNetwork size={16} weight="bold" />
 			</div>
-			<h2 class="text-lg font-bold tracking-tight text-[var(--ink)]">Kênh mạng xã hội chính thức</h2>
+			<h2 class="text-lg font-bold tracking-tight text-[var(--ink)]">
+				Kênh mạng xã hội chính thức
+			</h2>
 		</div>
 		<span class="text-xs text-[var(--ink-muted)]">Official Links</span>
 	</div>
 
-	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-		{#each profileData.socials as s}
+	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+		{#each profileData.socials as s (s.name)}
+			{@const isMailto = s.url.startsWith('mailto:')}
 			<a
 				href={s.url}
-				target="_blank"
-				rel="noreferrer"
-				class="chiraitori-card p-5 rounded-3xl active:scale-[0.98] flex items-center justify-between group"
+				target={isMailto ? undefined : '_blank'}
+				rel="external noopener noreferrer"
+				class="chiraitori-card group flex items-center justify-between rounded-3xl p-5 active:scale-[0.98]"
 			>
 				<div class="flex items-start gap-3.5">
-					<div class="w-10 h-10 rounded-2xl bg-[var(--surface-hover)] border border-[var(--line)] flex items-center justify-center shrink-0 mt-0.5 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent-soft)] transition-colors duration-200">
+					<div
+						class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[var(--line)] bg-[var(--surface-hover)] transition-colors duration-200 group-hover:border-[var(--accent)] group-hover:bg-[var(--accent-soft)]"
+					>
 						{#if s.iconKey === 'youtube'}
 							<YoutubeLogo size={22} weight="bold" class="text-rose-500" />
 						{:else if s.iconKey === 'tiktok'}
@@ -51,21 +58,27 @@
 
 					<div class="space-y-1">
 						<div class="flex items-center gap-2">
-							<h3 class="text-sm font-bold text-[var(--ink)] group-hover:text-[var(--accent)] transition-colors duration-200">
+							<h3
+								class="text-sm font-bold text-[var(--ink)] transition-colors duration-200 group-hover:text-[var(--accent)]"
+							>
 								{s.name}
 							</h3>
 							{#if s.badge}
-								<span class="text-[9px] px-2 py-0.5 rounded-full bg-[var(--accent-soft)] text-[var(--accent)] font-bold">
+								<span
+									class="rounded-full bg-[var(--accent-soft)] px-2 py-0.5 text-[9px] font-bold text-[var(--accent)]"
+								>
 									{s.badge}
 								</span>
 							{/if}
 						</div>
-						<p class="text-xs font-mono text-[var(--accent)] font-medium">{s.handle}</p>
+						<p class="font-mono text-xs font-medium text-[var(--accent)]">{s.handle}</p>
 						<p class="text-[11px] text-[var(--ink-muted)]">{s.description}</p>
 					</div>
 				</div>
 
-				<div class="w-8 h-8 rounded-full flex items-center justify-center text-[var(--ink-muted)] group-hover:text-[var(--accent)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 ease-[var(--bezier-one)] shrink-0">
+				<div
+					class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[var(--ink-muted)] transition-all duration-300 ease-[var(--bezier-one)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[var(--accent)]"
+				>
 					<ArrowUpRight size={17} weight="bold" />
 				</div>
 			</a>
@@ -73,11 +86,13 @@
 	</div>
 
 	<!-- Security Notice Directly Below Channels -->
-	<div class="p-4 sm:p-5 rounded-2xl bg-[var(--accent-soft)] border border-[var(--line)] flex items-start gap-3.5 text-xs mt-2">
-		<ShieldWarning size={22} weight="bold" class="text-[var(--accent)] shrink-0 mt-0.5" />
+	<div
+		class="mt-2 flex items-start gap-3.5 rounded-2xl border border-[var(--line)] bg-[var(--accent-soft)] p-4 text-xs sm:p-5"
+	>
+		<ShieldWarning size={22} weight="bold" class="mt-0.5 shrink-0 text-[var(--accent)]" />
 		<div class="space-y-1">
-			<p class="font-bold text-[var(--accent)] uppercase tracking-wider">CẢNH BÁO BẢO MẬT</p>
-			<p class="text-[var(--ink)] leading-relaxed font-medium">
+			<p class="font-bold tracking-wider text-[var(--accent)] uppercase">CẢNH BÁO BẢO MẬT</p>
+			<p class="leading-relaxed font-medium text-[var(--ink)]">
 				{profileData.warning}
 			</p>
 		</div>

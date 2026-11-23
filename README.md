@@ -38,16 +38,16 @@ Dự án sử dụng Svelte 5 (Runes mode), Tailwind CSS v4, tối ưu sẵn sà
 
 ## Thành phần giao diện chính
 
-| Thành phần | Vai trò |
-| :--- | :--- |
-| `Header.svelte` | Thanh điều hướng phẳng cố định trên cùng, biểu trưng thương hiệu và nút đổi giao diện |
-| `Hero.svelte` | Khung hiển thị mở đầu bất đối xứng với nội dung giới thiệu, các nút thao tác và ảnh minh họa nhân vật |
-| `AboutSection.svelte` | Thông tin cá nhân, tiểu sử tóm tắt và danh sách thông số ngăn cách bằng dấu gạch chéo |
-| `SanctuarySection.svelte` | Giới thiệu máy chủ Discord Thánh đường, thông tin kênh và video loop chất lượng cao từ Cloudflare R2 |
-| `SocialSection.svelte` | Danh sách liên kết mạng xã hội chính thức (YouTube, Discord, TikTok, Facebook, X) |
-| `DonationSection.svelte` | Cổng ủng hộ (WESCAN, Sociabuzz, PayPal, Gank) và popup Vietcombank QR chống sụt layout |
-| `ProfileSidebar.svelte` | Cột thông tin gắn cạnh bên trên Desktop với bộ đếm chỉ số thời gian thực và thẻ lời chào |
-| `MobileNav.svelte` | Thanh menu điều hướng chạm đáy trên điện thoại với tính năng scrollspy và viên nang chọn mục |
+| Thành phần                | Vai trò                                                                                               |
+| :------------------------ | :---------------------------------------------------------------------------------------------------- |
+| `Header.svelte`           | Thanh điều hướng phẳng cố định trên cùng, biểu trưng thương hiệu và nút đổi giao diện                 |
+| `Hero.svelte`             | Khung hiển thị mở đầu bất đối xứng với nội dung giới thiệu, các nút thao tác và ảnh minh họa nhân vật |
+| `AboutSection.svelte`     | Thông tin cá nhân, tiểu sử tóm tắt và danh sách thông số ngăn cách bằng dấu gạch chéo                 |
+| `SanctuarySection.svelte` | Giới thiệu máy chủ Discord Thánh đường, thông tin kênh và video loop chất lượng cao từ Cloudflare R2  |
+| `SocialSection.svelte`    | Danh sách liên kết mạng xã hội chính thức (YouTube, Discord, TikTok, Facebook, X)                     |
+| `DonationSection.svelte`  | Cổng ủng hộ (WESCAN, Sociabuzz, PayPal, Gank) và popup Vietcombank QR chống sụt layout                |
+| `ProfileSidebar.svelte`   | Cột thông tin gắn cạnh bên trên Desktop với bộ đếm chỉ số thời gian thực và thẻ lời chào              |
+| `MobileNav.svelte`        | Thanh menu điều hướng chạm đáy trên điện thoại với tính năng scrollspy và viên nang chọn mục          |
 
 ---
 
@@ -60,6 +60,7 @@ Dự án cấu hình sẵn `@sveltejs/adapter-auto`. Khi được đưa lên Ver
 Nếu máy đã cài sẵn GitHub CLI (`gh`):
 
 1. Khởi tạo Git và tạo kho lưu trữ GitHub bằng `gh`:
+
    ```bash
    git init
    git add .
@@ -191,15 +192,15 @@ kiamichau-portfolio/
 
 Các biến CSS định nghĩa tại `src/routes/layout.css`:
 
-| Biến | Giá trị Light Mode | Giá trị Dark Mode | Mục đích |
-| :--- | :--- | :--- | :--- |
-| `--page` | `#faf6f3` | `#1b171c` | Nền toàn trang |
-| `--surface` | `#fffcfa` | `#262027` | Nền thẻ card và container |
-| `--surface-hover` | `#f5ecec` | `#302630` | Nền khi hover vào thẻ |
-| `--ink` | `#382d37` | `#f0e5eb` | Màu chữ chính |
-| `--ink-muted` | `#73616b` | `#bdaab5` | Màu chữ phụ và mô tả |
-| `--accent` | `#944c68` | `#e5a4bd` | Màu điểm nhấn thương hiệu |
-| `--line` | `#e4d7dc` | `#443540` | Đường kẻ phân cách và viền thẻ |
+| Biến              | Giá trị Light Mode | Giá trị Dark Mode | Mục đích                       |
+| :---------------- | :----------------- | :---------------- | :----------------------------- |
+| `--page`          | `#faf6f3`          | `#1b171c`         | Nền toàn trang                 |
+| `--surface`       | `#fffcfa`          | `#262027`         | Nền thẻ card và container      |
+| `--surface-hover` | `#f5ecec`          | `#302630`         | Nền khi hover vào thẻ          |
+| `--ink`           | `#382d37`          | `#f0e5eb`         | Màu chữ chính                  |
+| `--ink-muted`     | `#73616b`          | `#bdaab5`         | Màu chữ phụ và mô tả           |
+| `--accent`        | `#944c68`          | `#e5a4bd`         | Màu điểm nhấn thương hiệu      |
+| `--line`          | `#e4d7dc`          | `#443540`         | Đường kẻ phân cách và viền thẻ |
 
 ---
 

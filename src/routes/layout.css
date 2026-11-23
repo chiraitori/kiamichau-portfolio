@@ -16,7 +16,7 @@
 	--nav-bg: rgba(250, 246, 243, 0.92);
 	--font-handwritten: 'Playpen Sans', 'Comic Sans MS', cursive;
 	--font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-	--bezier-one: cubic-bezier(.25, .46, .45, .94);
+	--bezier-one: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 :root.dark,
@@ -50,7 +50,9 @@ body {
 	background-color: var(--page);
 	color: var(--ink);
 	font-family: var(--font-sans);
-	transition: background-color 0.15s ease, color 0.15s ease;
+	transition:
+		background-color 0.15s ease,
+		color 0.15s ease;
 	min-height: 100dvh;
 }
 
@@ -62,20 +64,21 @@ body {
 .chiraitori-card {
 	border: 1px solid var(--line);
 	background-color: var(--surface);
-	transition: transform 0.3s var(--bezier-one),
-	            box-shadow 0.3s var(--bezier-one),
-	            border-color 0.3s ease,
-	            background-color 0.3s ease;
+	transition:
+		transform 0.3s var(--bezier-one),
+		box-shadow 0.3s var(--bezier-one),
+		border-color 0.3s ease,
+		background-color 0.3s ease;
 }
 
 .chiraitori-card:hover {
 	transform: translateY(-2px);
-	box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.12);
+	box-shadow: 0 15px 25px -10px rgba(var(--shadow-color), 0.12);
 	border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
 }
 
 .dark .chiraitori-card:hover {
-	box-shadow: 0 15px 25px -10px rgba(0, 0, 0, 0.45);
+	box-shadow: 0 15px 25px -10px rgba(var(--shadow-color), 0.45);
 	border-color: color-mix(in srgb, var(--accent) 65%, var(--line));
 }
 

@@ -1,19 +1,29 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { House, User, DiscordLogo, ShareNetwork, Coffee } from 'phosphor-svelte';
+
+	const navItems = [
+		{ id: 'home', label: '/', href: resolve('/#home'), icon: House },
+		{ id: 'about', label: 'about', href: resolve('/#about'), icon: User },
+		{ id: 'sanctuary', label: 'sanctuary', href: resolve('/#sanctuary'), icon: DiscordLogo },
+		{ id: 'channels', label: 'socials', href: resolve('/#channels'), icon: ShareNetwork },
+		{ id: 'donations', label: 'donate', href: resolve('/#donations'), icon: Coffee }
+	];
 
 	let activeSection = $state('home');
 
-	const navItems = [
-		{ id: 'home', label: '/', href: '/#home', icon: House },
-		{ id: 'about', label: 'about', href: '/#about', icon: User },
-		{ id: 'sanctuary', label: 'sanctuary', href: '/#sanctuary', icon: DiscordLogo },
-		{ id: 'channels', label: 'socials', href: '/#channels', icon: ShareNetwork },
-		{ id: 'donations', label: 'donate', href: '/#donations', icon: Coffee }
-	];
-
 	onMount(() => {
-		const sectionIds = ['home', 'about', 'sanctuary', 'channels', 'donations'];
+		const elements = navItems
+			.map((item) => document.getElementById(item.id))
+			.filter((el): el is HTMLElement => el !== null);
+
+		if (elements.length === 0) {
+			activeSection = '';
+			return;
+		}
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -25,34 +35,49 @@
 			{ rootMargin: '-20% 0px -60% 0px', threshold: 0 }
 		);
 
-		sectionIds.forEach((id) => {
-			const el = document.getElementById(id);
-			if (el) observer.observe(el);
-		});
+		for (const el of elements) {
+			observer.observe(el);
+		}
 
-		return () => observer.disconnect();
+		const onScroll = () => {
+			if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24) {
+				activeSection = 'donations';
+			}
+		};
+
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => {
+			observer.disconnect();
+			window.removeEventListener('scroll', onScroll);
+		};
 	});
 </script>
 
-<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 w-full border-t border-[var(--line)] backdrop-blur-xl bg-[var(--nav-bg)]/95 shadow-[0_-4px_20px_rgba(var(--shadow-color),0.03)]">
-	<ul class="flex items-center justify-around px-1 pt-2 pb-[max(10px,env(safe-area-inset-bottom))] max-w-lg mx-auto">
-		{#each navItems as item}
-			{@const isActive = activeSection === item.id}
+<nav
+	aria-label="Điều hướng di động"
+	class="fixed inset-x-0 bottom-0 z-40 w-full border-t border-[var(--line)] bg-[var(--nav-bg)] shadow-[0_-4px_20px_rgba(var(--shadow-color),0.03)] backdrop-blur-xl lg:hidden"
+>
+	<ul
+		class="mx-auto flex max-w-lg items-center justify-around px-1 pt-2 pb-[max(10px,env(safe-area-inset-bottom))]"
+	>
+		{#each navItems as item (item.id)}
+			{@const isActive = !page.error && activeSection === item.id}
 			<li class="flex-1">
 				<a
 					href={item.href}
 					onclick={() => (activeSection = item.id)}
-					class="flex flex-col items-center justify-center py-1 transition-transform active:scale-95 group"
+					aria-current={isActive ? 'location' : undefined}
+					class="group flex flex-col items-center justify-center py-1 transition-transform active:scale-95"
 				>
 					<div
-						class="w-14 h-7 rounded-full flex items-center justify-center transition-all {isActive
+						class="flex h-7 w-14 items-center justify-center rounded-full transition-all {isActive
 							? 'bg-[var(--accent-soft)] text-[var(--accent)] shadow-sm'
 							: 'bg-transparent text-[var(--ink-muted)] group-hover:text-[var(--ink)]'}"
 					>
 						<item.icon size={18} weight={isActive ? 'fill' : 'bold'} />
 					</div>
 					<span
-						class="font-mono text-[11px] mt-1 tracking-tight transition-colors {isActive
+						class="mt-1 font-mono text-[11px] tracking-tight transition-colors {isActive
 							? 'font-bold text-[var(--accent)]'
 							: 'font-medium text-[var(--ink-muted)] group-hover:text-[var(--ink)]'}"
 					>

@@ -3,20 +3,29 @@ export interface SocialLink {
 	url: string;
 	handle: string;
 	category: 'social' | 'community' | 'contact';
-	iconSlug?: string;
-	iconKey?: 'youtube' | 'tiktok' | 'facebook' | 'discord' | 'x' | 'email';
+	iconKey: 'youtube' | 'tiktok' | 'facebook' | 'discord' | 'x' | 'email';
 	badge?: string;
-	description?: string;
+	description: string;
 }
 
 export interface DonationLink {
 	name: string;
 	url: string;
-	accountInfo?: string;
-	note?: string;
+	note: string;
 	recommended?: boolean;
-	iconKey?: 'bank' | 'qrcode' | 'globe' | 'creditcard' | 'gift' | 'zypage';
+	iconKey: 'bank' | 'qrcode' | 'globe' | 'creditcard' | 'gift' | 'zypage';
 	noStreamAlert?: boolean;
+}
+
+export interface BankDetails {
+	bankName: string;
+	bankFullName: string;
+	accountNumber: string;
+	accountHolder: string;
+	qrWebpUrl: string;
+	qrJpgUrl: string;
+	carrdUrl: string;
+	messageQuote: string;
 }
 
 export interface CreatorStats {
@@ -33,14 +42,16 @@ export interface CreatorProfile {
 	languages: string[];
 	email: string;
 	avatarUrl: string;
+	avatarWebpUrl: string;
 	bannerUrl: string;
-	cardUrl: string;
+	bannerWebpUrl: string;
 	bioGreeting: string;
 	warning: string;
 	scheduleNote: string;
 	discordTip: string;
-	discordDemoVideoUrl?: string;
-	stats?: CreatorStats;
+	discordDemoVideoUrl: string;
+	stats: CreatorStats;
+	bankDetails: BankDetails;
 	socials: SocialLink[];
 	donations: DonationLink[];
 }
@@ -50,20 +61,35 @@ export const profileData: CreatorProfile = {
 	realName: 'Châu Hoàng Long',
 	title: 'Content Creator & Streamer',
 	birthYear: 2001,
-	location: 'TP. Hồ Chí Minh, Việt Nam',
+	location: 'TP. Hồ Chí Minh',
 	languages: ['Tiếng Việt', 'English'],
 	email: 'kiamichau@gmail.com',
 	avatarUrl: '/avatar.png',
+	avatarWebpUrl: '/avatar.webp',
 	bannerUrl: '/banner.jpg',
-	cardUrl: '/card.jpg',
+	bannerWebpUrl: '/banner.webp',
 	bioGreeting: 'Hellu mọi người! Mình là Kiami Châu, một content creator & streamer tự do.',
 	warning: 'NGOÀI CÁC ACCOUNT MÌNH ĐỂ Ở ĐÂY THÌ MÌNH KHÔNG CÓ BẤT KÌ TÀI KHOẢN NÀO KHÁC.',
-	scheduleNote: 'Lịch stream mình có thông báo chi tiết trong Discord. Lịch phát sóng có thể linh hoạt theo tuần nên các bạn nhớ vào Discord để nhận thông báo sớm nhất nhé.',
-	discordTip: 'Nếu gặp lỗi không mở được link mời trực tiếp, bạn hãy tìm từ khóa "Thánh đường Kiamị Châu" trong mục Khám phá (Discover) của Discord.',
-	discordDemoVideoUrl: 'https://pub-dacee17aa371477bb160dbcf7313433e.r2.dev/demo/video/discord-demo-1080.mp4',
+	scheduleNote:
+		'Lịch stream mình có thông báo chi tiết trong Discord. Lịch phát sóng có thể linh hoạt theo tuần nên các bạn nhớ vào Discord để nhận thông báo sớm nhất nhé.',
+	discordTip:
+		'Nếu gặp lỗi không mở được link mời trực tiếp, bạn hãy tìm từ khóa "Thánh đường Kiamị Châu" trong mục Khám phá (Discover) của Discord.',
+	discordDemoVideoUrl:
+		'https://pub-dacee17aa371477bb160dbcf7313433e.r2.dev/demo/video/discord-demo-1080.mp4',
 	stats: {
 		youtubeSubs: '10.7K',
 		tiktokFollowers: '48.7K'
+	},
+	bankDetails: {
+		bankName: 'Vietcombank',
+		bankFullName: 'Ngoại thương Việt Nam',
+		accountNumber: '0251002781774',
+		accountHolder: 'CHAU HOANG LONG',
+		qrWebpUrl: '/donations/vcb-qr.webp',
+		qrJpgUrl: '/donations/vcb-qr.jpg',
+		carrdUrl: 'https://kiamibanking.carrd.co/',
+		messageQuote:
+			'"P/s: có gì mọi người ghi chú tên mình với kèm theo lời nhắn càng tốt nghen ;> tui sẽ đọc hếttt. Cảm ơn mọi ngườiii ♥"'
 	},
 	socials: [
 		{
